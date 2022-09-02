@@ -1,0 +1,14 @@
+{
+  "name": "bellingcat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/Main.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "Volifter",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
