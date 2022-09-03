@@ -5,10 +5,149 @@ html, body {
 body {
     overflow: hidden;
     margin: 0;
+    font-family: "Helvetica Neue", Verdana, sans-serif;
 }
 
 svg {
     width: 100%;
     height: 100%;
     cursor: grab;
+}
+
+button {
+    --text-color: #000;
+    --background-color: #f4f4f4;
+    --active-color: #eee;
+    font-size: 12pt;
+    padding: 8px 16px;
+    color: var(--text-color);
+    background: var(--background-color);
+    border: 1px solid #0002;
+    border-radius: 5px;
+    appearance: none;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+button:hover, button:active {
+    background: var(--active-color);
+}
+button:active {
+    box-shadow: inset 0 0 10px #0004;
+    transition: none;
+}
+button.primary {
+    --text-color: #fff;
+    --background-color: #77f;
+    --active-color: #66e;
+}
+button.danger {
+    --text-color: #fff;
+    --background-color: #f44;
+    --active-color: #e33;
+}
+
+body > nav {
+    position: absolute;
+    height: 100%;
+    width: 300px;
+    top: 0;
+    background: #fff;
+    box-shadow: 0 0 20px #0004;
+}
+body > nav .arrow {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    margin-top: -25px;
+    width: 40px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+body > nav .arrow::before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url("./icons/chevron-left.svg");
+    background-size: contain;
+    opacity: .3;
+    transition: opacity .15s ease-in-out, transform .25s ease-in-out;
+}
+body > nav:hover .arrow::before { opacity: .5; }
+
+.left-panel {
+    left: 0;
+    margin-left: -300px;
+    border-right: 1px solid #ccc;
+    transition: margin-left .25s ease-in-out;
+}
+.left-panel .arrow {
+    margin-left: 300px;
+    border-radius: 0 25px 25px 0;
+    border-left: none;
+}
+.left-panel .arrow::before {
+    margin-left: -5px;
+    transform: rotate(180deg);
+}
+.left-panel.expanded { margin-left: 0; }
+.left-panel.expanded .arrow::before { transform: rotate(0); }
+
+.right-panel {
+    right: 0;
+    margin-right: -300px;
+    border-left: 1px solid #ccc;
+    transition: margin-right .25s ease-in-out;
+}
+.right-panel .arrow {
+    margin-left: -40px;
+    border-radius: 25px 0 0 25px;
+    border-right: none;
+}
+.right-panel .arrow::before {
+    margin-right: -5px;
+    transform: rotate(0deg);
+}
+.right-panel.expanded { margin-right: 0; }
+.right-panel.expanded .arrow::before { transform: rotate(180deg); }
+
+body > nav section {
+    max-height: 45px;
+    overflow: hidden;
+    transition: max-height .2s ease-in-out;
+    border-bottom: 1px solid #ccc;
+}
+body > nav section h1 {
+    margin: 0;
+    padding: 10px;
+    height: 25px;
+    background: #eee;
+    user-select: none;
+    cursor: pointer;
+}
+body > nav section div {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+body > nav section div button { margin-bottom: 10px; }
+body > nav section div button:last-child { margin-bottom: 0; }
+
+.dragged {
+    cursor: grabbing;
+}
+
+.node {
+    cursor: pointer;
+}
+
+.edge {
+    stroke: #ccc;
+    stroke-width: 4px;
+    cursor: default;
+    marker-end: url(#arrowhead);
 }

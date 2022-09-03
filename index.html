@@ -7,7 +7,36 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <svg></svg>
+    <nav class="left-panel">
+        <section>
+            <h1>Edit</h1>
+            <div>
+                <button class="primary">New node (N)</button>
+                <button>Connect nodes (C)</button>
+                <button class="danger">Delete nodes (⌫)</button>
+            </div>
+        </section>
+        <section>
+            <h1>Export</h1>
+            <ul>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+            </ul>
+        </section>
+        <div class="arrow"></div>
+    </nav>
+    <nav class="right-panel">
+        <div class="arrow"></div>
+    </nav>
+    <svg>
+        <defs>
+            <marker id="arrowhead" markerWidth="5" markerHeight="4"
+                refX="0" refY="2" orient="auto">
+                <polygon points="0 0, 5 2, 0 4" fill="#ccc" />
+            </marker>
+        </defs>
+    </svg>
     <script src="js/index.js" type="module"></script>
 </body>
 </html>
