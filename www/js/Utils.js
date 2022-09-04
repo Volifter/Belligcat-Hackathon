@@ -30,4 +30,31 @@ export default class Utils {
 
         return $element;
     }
+
+    static pickFile(type) {
+        return new Promise(resolve => {
+            let input = document.createElement("input");
+            input.type = "file";
+            input.accept = type;
+
+            input.onchange = () => {
+                resolve(input.files[0]);
+            };
+
+            input.click();
+        });
+    }
+
+    static convertImageToBase64(file) {
+        return new Promise(resolve => {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", e => resolve(e.target.result));
+            reader.readAsDataURL(file);
+        })
+    }
+
+    static capitalize(str) {
+        return str[0].toLocaleUpperCase() + str.substring(1);
+    }
 }

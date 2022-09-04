@@ -3,33 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tweegraph</title>
+    <title>Graphinator</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+    <template id="position-component-template">
+        <div class="component position-component">
+            <h1>Position</h1>
+            <div class="coordinates">
+                <div>
+                    <label>X</label>
+                    <input class="x-input" type="number">
+                </div>
+                <div>
+                    <label>Y</label>
+                    <input class="y-input" type="number">
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="image-component-template">
+        <div class="component image-component">
+            <h1>Image</h1>
+            <button class="delete"></button>
+            <div class="image-preview"></div>
+            <button class="pick-button">Pick image...</button>
+        </div>
+    </template>
+    <template id="edges-component-template">
+        <div class="component edges-component">
+            <h1>Edges</h1>
+            <button class="delete"></button>
+            <ul></ul>
+            <button class="new-edge-button">New edge...</button>
+        </div>
+    </template>
+    <template id="twitter-component-template">
+        <div class="component twitter-component">
+            <h1>Twitter</h1>
+            <button class="delete"></button>
+            <input placeholder="Username">
+        </div>
+    </template>
     <nav class="left-panel">
         <section>
             <h1>Edit</h1>
             <div>
-                <button class="primary">New node (N)</button>
-                <button>Connect nodes (C)</button>
-                <button class="danger">Delete nodes (⌫)</button>
+                <button class="primary new-node-button">New node (N)</button>
+                <button class="danger delete-node-button">Delete nodes (⌫)</button>
+                <button class="twitter-load-button">Load Twitter followers</button>
             </div>
         </section>
         <section>
             <h1>Export</h1>
-            <ul>
-                <li>Item</li>
-                <li>Item</li>
-                <li>Item</li>
-            </ul>
+            <div>
+                <button class="primary export-button">Export image</button>
+            </div>
         </section>
         <div class="arrow"></div>
     </nav>
     <nav class="right-panel">
         <div class="arrow"></div>
+        <div class="components-view">
+            <div class="components"></div>
+            <div class="component new-component">
+                <h1>Add component</h1>
+                <select>
+                    <option value="" selected disabled>New component...</option>
+                </select>
+            </div>
+        </div>
     </nav>
-    <svg>
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <style>
+            .edge {
+                stroke: #ccc;
+                stroke-width: 4px;
+                cursor: default;
+                marker-end: url(#arrowhead);
+            }
+        </style>
         <defs>
             <marker id="arrowhead" markerWidth="5" markerHeight="4"
                 refX="0" refY="2" orient="auto">

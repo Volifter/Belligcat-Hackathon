@@ -1,6 +1,6 @@
-export default class Node {
+export default class Edge {
     constructor(node_from, node_to, $line) {
-        this.nodeFrom = node_from;
+        this. nodeFrom = node_from;
         this.nodeTo = node_to;
         this.$line = $line;
     }

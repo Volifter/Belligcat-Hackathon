@@ -46,6 +46,16 @@ button.danger {
     --active-color: #e33;
 }
 
+input {
+    box-sizing: border-box;
+    box-shadow: 0 0 0 6px #aaf0;
+    transition: all .2s ease-in-out;
+}
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #aafa;
+}
+
 body > nav {
     position: absolute;
     height: 100%;
@@ -114,6 +124,11 @@ body > nav:hover .arrow::before { opacity: .5; }
 }
 .right-panel.expanded { margin-right: 0; }
 .right-panel.expanded .arrow::before { transform: rotate(180deg); }
+.right-panel .components-view {
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 100%;
+}
 
 body > nav section {
     max-height: 45px;
@@ -137,17 +152,134 @@ body > nav section div {
 body > nav section div button { margin-bottom: 10px; }
 body > nav section div button:last-child { margin-bottom: 0; }
 
-.dragged {
-    cursor: grabbing;
+.components {
+    display: flex;
+    flex-direction: column;
 }
 
-.node {
+.component {
+    position: relative;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #eee;
+    border-radius: 10px;
+}
+.component > h1 {
+    margin: 0 0 10px 0;
+    padding: 0 0 2px 0;
+    font-size: 12pt;
+    border-bottom: 1px solid #ccc;
+}
+.component > .row { display: flex; }
+.component button {
+    padding: 5px 10px;
+    font-size: 10pt;
+    width: 100%;
+}
+.component button.delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+    background: url("icons/delete.svg") no-repeat center;
+    opacity: .5;
+    background-size: 70%;
+    transition: all .2s ease-in-out;
+}
+.component button.delete:hover, .component button.delete:focus {
+    opacity: 1;
+    background-color: #faa;
+}
+.component input {
+    display: inline-block;
+    font-size: 12pt;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.components .coordinates {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.components .coordinates div {
+    display: flex;
+    align-items: center;
+}
+.components .coordinates label {
+    margin: 0 10px 0 0;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.components .coordinates input {
+    flex: 1;
+    width: 100px;
+}
+
+.image-component .image-preview {
+    width: 100%;
+    padding-top: 100%;
+    margin-bottom: 10px;
+    background: url("icons/image.svg") no-repeat center #fff;
+    background-size: 50%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.edge {
-    stroke: #ccc;
-    stroke-width: 4px;
-    cursor: default;
-    marker-end: url(#arrowhead);
+.edges-component ul {
+    padding-left: 30px;
+    list-style: none;
+}
+
+.edges-component li::before {
+    content: "→";
+    position: absolute;
+    font-size: 14pt;
+    font-weight: bold;
+    margin: -2px 0 0 -25px;
+}
+.edges-component li.picking { opacity: .5; }
+.twitter-component input { width: 100%;  }
+
+.new-component { visibility: collapse; }
+.new-component.shown { visibility: visible; }
+.new-component > h1 {
+    text-align: center;
+    opacity: .5;
+    border: none;
+}
+.new-component select {
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 5px;
+    appearance: none;
+    text-align: center;
+    background: #66f;
+    color: #fff;
+    border: none;
+}
+
+.dragged { cursor: grabbing; }
+
+.node { cursor: pointer; }
+.node.selected {
+    filter: drop-shadow(0 0 10px #aaf);
+    stroke: #77f;
+}
+
+button[disabled] {
+    opacity: .5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.export-button {
+    /*width: 100%;*/
 }
