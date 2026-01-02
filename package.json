@@ -1,5 +1,5 @@
 {
-  "name": "bellingcat",
+  "name": "graphinator",
   "version": "1.0.0",
   "description": "",
   "main": "src/Main.js",
@@ -9,7 +9,7 @@
   "author": "Volifter",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.0",
-    "puppeteer": "^22.12.1"
+    "express": "^5.2.1",
+    "puppeteer": "^24.34.0"
   }
 }
